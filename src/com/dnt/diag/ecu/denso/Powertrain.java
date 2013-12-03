@@ -1,8 +1,9 @@
 package com.dnt.diag.ecu.denso;
 
 import com.dnt.diag.db.VehicleDB;
-import com.dnt.diag.io.Commbox;
 import com.dnt.diag.ecu.AbstractECU;
+import com.dnt.diag.io.Commbox;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui

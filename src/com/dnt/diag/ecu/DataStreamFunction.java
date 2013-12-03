@@ -1,6 +1,7 @@
 package com.dnt.diag.ecu;
 
 import com.dnt.diag.data.LiveDataList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui

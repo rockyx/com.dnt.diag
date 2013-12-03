@@ -1,7 +1,7 @@
 package com.dnt.diag.io;
 
-import java.io.FilenameFilter;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
@@ -161,14 +161,14 @@ public class SerialPort {
     //
     // Probe for linux-styled devices : /dev/ttyS* or /dev/ttyUSB*
     //
-    for(String dev : ttys) {
+    for (String dev : ttys) {
       if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
         linuxStyle = true;
         break;
       }
     }
 
-    for(String dev : ttys) {
+    for (String dev : ttys) {
       if (linuxStyle) {
         if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
           serialPorts.add(dev);

@@ -1,8 +1,9 @@
 package com.dnt.diag.ecu;
 
+import com.dnt.diag.data.TroubleCodeVector;
+
 import java.io.IOException;
 
-import com.dnt.diag.data.TroubleCodeVector;
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui

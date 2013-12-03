@@ -2,6 +2,7 @@ package com.dnt.diag.io;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui
@@ -106,7 +107,7 @@ public class Commbox {
           try {
             nativeConnect();
             return;
-          } catch (Exception ex){
+          } catch (Exception ex) {
             continue;
           }
         }

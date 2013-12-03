@@ -1,6 +1,7 @@
 package com.dnt.diag.data;
 
 import java.util.ArrayList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui
@@ -88,7 +89,7 @@ public class LiveDataList {
   }
 
   /*
-	 * Must call collate() first.
+   * Must call collate() first.
 	 */
   public LiveDataItem[] getEnabledItems() {
     return _enabledItems;

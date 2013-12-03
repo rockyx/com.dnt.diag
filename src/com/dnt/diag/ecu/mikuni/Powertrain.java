@@ -1,10 +1,11 @@
 package com.dnt.diag.ecu.mikuni;
 
+import com.dnt.diag.db.VehicleDB;
+import com.dnt.diag.ecu.AbstractECU;
+import com.dnt.diag.io.Commbox;
+
 import java.io.IOException;
 
-import com.dnt.diag.db.VehicleDB;
-import com.dnt.diag.io.Commbox;
-import com.dnt.diag.ecu.AbstractECU;
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui

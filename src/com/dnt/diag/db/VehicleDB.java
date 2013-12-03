@@ -1,6 +1,7 @@
 package com.dnt.diag.db;
 
 import java.io.IOException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rocky Tsui

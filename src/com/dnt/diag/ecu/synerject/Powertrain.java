@@ -1,10 +1,10 @@
 package com.dnt.diag.ecu.synerject;
 
-import java.io.IOException;
-
 import com.dnt.diag.db.VehicleDB;
 import com.dnt.diag.ecu.AbstractECU;
 import com.dnt.diag.io.Commbox;
+
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.

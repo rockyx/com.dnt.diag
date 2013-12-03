@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="com.dnt.diag:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/com_dnt_diag_jar</output-path>
+    <root id="archive" name="com.dnt.diag.jar">
+      <element id="module-output" name="com.dnt.diag" />
+    </root>
+  </artifact>
+</component>

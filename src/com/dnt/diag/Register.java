@@ -18,5 +18,5 @@ public class Register {
 
   public native static void save(String reg);
 
-  public native static boolean check();
+  public native static boolean getIsReged();
 }

@@ -8,6 +8,9 @@ package com.dnt.diag.db;
  * To change this template use File | Settings | File Templates.
  */
 public class SystemDB {
+  static {
+    System.loadLibrary("dntdiag");
+  }
   private SystemDB() {
 
   }

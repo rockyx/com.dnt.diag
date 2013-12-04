@@ -10,6 +10,10 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public class VehicleDB {
+  static {
+    System.loadLibrary("dntdiag");
+  }
+
   private long _ptr;
 
   private native void ctor(String path, String name);

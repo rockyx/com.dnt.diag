@@ -8,14 +8,17 @@ package com.dnt.diag.io;
  * To change this template use File | Settings | File Templates.
  */
 public class IOBuffer {
+  static {
+    System.loadLibrary("dntdiag");
+  }
   private long _ptr;
 
-  private native void cotr();
+  private native void ctor();
 
   private native void detr() throws NullPointerException;
 
   public IOBuffer() {
-    cotr();
+    ctor();
   }
 
   protected void finalize() throws Throwable {

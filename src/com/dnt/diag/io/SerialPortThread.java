@@ -107,7 +107,7 @@ public class SerialPortThread {
     _buffer = buffer;
     _read = null;
     _write = null;
-    _executor = Executors.newFixedThreadPool(2);
+    _executor = Executors.newCachedThreadPool();
   }
 
   protected void finalize() throws Throwable {
@@ -128,17 +128,15 @@ public class SerialPortThread {
       throw new IOException();
     } catch (IOException e) {
       _port.close();
-      e.printStackTrace();
+      throw e;
     }
   }
 
   public void start() {
-    if (_executor.isShutdown()) {
-      _read = new SerialPortRead(_port, _buffer);
-      _write = new SerialPortWrite(_port, _buffer);
-      _executor.execute(_read);
-      _executor.execute(_write);
-    }
+    _read = new SerialPortRead(_port, _buffer);
+    _write = new SerialPortWrite(_port, _buffer);
+    _executor.execute(_read);
+    _executor.execute(_write);
   }
 
   public SerialPort getPort() {
@@ -146,21 +144,11 @@ public class SerialPortThread {
   }
 
   public void stop() {
-    if (_executor.isShutdown())
-      return;
-
     try {
       _port.close();
       _executor.awaitTermination(2, TimeUnit.SECONDS);
-    } catch (NullPointerException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    } catch (Exception ex) {
+
     }
   }
 }

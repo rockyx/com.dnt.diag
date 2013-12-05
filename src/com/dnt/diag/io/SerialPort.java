@@ -15,6 +15,9 @@ import java.util.regex.Pattern;
  * To change this template use File | Settings | File Templates.
  */
 public class SerialPort {
+  static {
+    System.loadLibrary("dntdiag");
+  }
   public enum Parity {
     None(0), Odd(1), Even(2), Mark(3), Space(4);
 
@@ -148,38 +151,42 @@ public class SerialPort {
 
   public native void write(byte[] buffer, int offset, int count) throws IOException, NullPointerException, TimeoutException;
 
-  public static String[] getPortNames() {
-    final Pattern re = Pattern.compile("tty*");
-    String[] ttys = new File("/dev/").list(new FilenameFilter() {
-      @Override
-      public boolean accept(File dir, String name) {
-        return new File(dir, name).isFile() && re.matcher(name).matches();
-      }
-    });
-    ArrayList<String> serialPorts = new ArrayList<String>();
-    boolean linuxStyle = false;
-    //
-    // Probe for linux-styled devices : /dev/ttyS* or /dev/ttyUSB*
-    //
-    for (String dev : ttys) {
-      if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
-        linuxStyle = true;
-        break;
-      }
-    }
-
-    for (String dev : ttys) {
-      if (linuxStyle) {
-        if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
-          serialPorts.add(dev);
-        } else {
-          if (dev != "/dev/tty" && dev.startsWith("/dev/tty") && !dev.startsWith("/dev/ttyC"))
-            serialPorts.add(dev);
-        }
-      }
-    }
-
-    return serialPorts.toArray(new String[serialPorts.size()]);
-  }
+  public native static String[] getPortNames();
+//  public static String[] getPortNames() {
+//    final Pattern re = Pattern.compile("tty*");
+//    String[] ttys = new File("/dev/").list(new FilenameFilter() {
+//      @Override
+//      public boolean accept(File dir, String name) {
+//        return new File(dir, name).isFile() && re.matcher(name).matches();
+//      }
+//    });
+//
+//    if (ttys == null) return null;
+//
+//    ArrayList<String> serialPorts = new ArrayList<String>();
+//    boolean linuxStyle = false;
+//    //
+//    // Probe for linux-styled devices : /dev/ttyS* or /dev/ttyUSB*
+//    //
+//    for (String dev : ttys) {
+//      if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
+//        linuxStyle = true;
+//        break;
+//      }
+//    }
+//
+//    for (String dev : ttys) {
+//      if (linuxStyle) {
+//        if (dev.startsWith("/dev/ttyS") || dev.startsWith("/dev/ttyUSB")) {
+//          serialPorts.add(dev);
+//        } else {
+//          if (dev != "/dev/tty" && dev.startsWith("/dev/tty") && !dev.startsWith("/dev/ttyC"))
+//            serialPorts.add(dev);
+//        }
+//      }
+//    }
+//
+//    return serialPorts.toArray(new String[serialPorts.size()]);
+//  }
 }
 

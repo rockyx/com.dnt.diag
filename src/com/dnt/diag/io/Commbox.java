@@ -11,6 +11,9 @@ import java.util.NoSuchElementException;
  * To change this template use File | Settings | File Templates.
  */
 public class Commbox {
+  static {
+    System.loadLibrary("dntdiag");
+  }
   public static final int UNKNOW = 0;
   public static final int C168 = 1;
   public static final int W80 = 2;
@@ -39,9 +42,14 @@ public class Commbox {
     _stream = new IOBuffer();
     ctor(_stream.getNative(), ver);
     _ver = ver;
+    _port = new SerialPortThread(_stream);
   }
 
   protected void finalize() throws Throwable {
+    if (_port != null) {
+      _port.stop();
+      _port = null;
+    }
     detr();
     super.finalize();
   }
@@ -53,6 +61,9 @@ public class Commbox {
   private void openC168SerialMode() throws IOException {
     _port.stop();
     String[] infos = SerialPort.getPortNames();
+
+    if (infos == null)
+      throw new IOException();
 
     for (String info : infos) {
       try {
@@ -133,5 +144,9 @@ public class Commbox {
 
   public void disconnect() throws IOException {
     nativeDisconnect();
+    if (_ver == C168 || _ver == W80) {
+      _port.stop();
+      _port = null;
+    }
   }
 }

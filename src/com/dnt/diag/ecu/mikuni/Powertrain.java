@@ -39,7 +39,7 @@ public class Powertrain extends AbstractECU {
     super.finalize();
   }
 
-  public native String getECUVersion() throws IOException;
+  public native String getVersion() throws IOException;
 
   public native void tpsIdleSetting() throws IOException;
 

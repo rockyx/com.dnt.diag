@@ -11,6 +11,7 @@ public class IOBuffer {
   static {
     System.loadLibrary("dntdiag");
   }
+
   private long _ptr;
 
   private native void ctor();

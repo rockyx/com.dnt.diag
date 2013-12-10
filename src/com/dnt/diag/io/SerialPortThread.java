@@ -15,7 +15,6 @@ import java.util.concurrent.TimeoutException;
  */
 public class SerialPortThread {
   class SerialPortRead implements Runnable {
-
     private SerialPort _port;
     private IOBuffer _buffer;
     private byte[] _buff;

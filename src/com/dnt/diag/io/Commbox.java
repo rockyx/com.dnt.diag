@@ -14,6 +14,7 @@ public class Commbox {
   static {
     System.loadLibrary("dntdiag");
   }
+
   public static final int UNKNOW = 0;
   public static final int C168 = 1;
   public static final int W80 = 2;

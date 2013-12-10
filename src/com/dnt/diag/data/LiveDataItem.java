@@ -36,6 +36,7 @@ public class LiveDataItem {
 
   protected void finalize() throws Throwable {
     detr();
+    super.finalize();
   }
 
   public native String getShortName();
@@ -60,11 +61,13 @@ public class LiveDataItem {
 
   public native int getPosition();
 
-  public native boolean isEnabled();
+  public native boolean getIsEnabled();
 
-  public native boolean isShowed();
+  public native boolean getIsShowed();
 
-  public native boolean isOutOfRange();
+  public native void setIsShowed(boolean value);
+
+  public native boolean getIsOutOfRange();
 
   public native byte[] getCommand();
 

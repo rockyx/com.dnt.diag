@@ -1,6 +1,7 @@
 package com.dnt.diag.data;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * Time: 下午3:38
  * To change this template use File | Settings | File Templates.
  */
-public class LiveDataList {
+public class LiveDataList implements Iterable<LiveDataItem> {
   private static final long serialVersionUID = 1L;
   private long _ptr;
   private ArrayList<LiveDataItem> _elements;
@@ -57,6 +58,7 @@ public class LiveDataList {
   public LiveDataList(long pNative) {
     _ptr = pNative;
     int size = nativeSize();
+    _elements = new ArrayList<LiveDataItem>(size);
 
     for (int i = 0; i < size; i++) {
       _elements.add(new LiveDataItem(nativeGet(i)));
@@ -107,4 +109,9 @@ public class LiveDataList {
   public native boolean isEmpty();
 
   public native int getShowedPosition(int index);
+
+  @Override
+  public Iterator<LiveDataItem> iterator() {
+    return _elements.iterator();
+  }
 }

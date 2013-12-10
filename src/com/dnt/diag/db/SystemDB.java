@@ -11,6 +11,7 @@ public class SystemDB {
   static {
     System.loadLibrary("dntdiag");
   }
+
   private SystemDB() {
 
   }
